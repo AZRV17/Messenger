@@ -1,0 +1,38 @@
+﻿<Window x:Class="Message.AdminChat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Message"
+        mc:Ignorable="d"
+        Title="AdminChat" Height="450" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="Connection Log:" FontWeight="Bold"/>
+            <ListBox x:Name="LogListBox" ItemsSource="{Binding ConnectionLog}" Height="100" Margin="5"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="User List:" FontWeight="Bold"/>
+            <ListBox x:Name="UsersListBox" ItemsSource="{Binding UserList}" Height="100" Margin="5"/>
+        </StackPanel>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="1">
+                <ListBox x:Name="MessagesListBox"></ListBox>
+            </ScrollViewer>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+                <TextBox x:Name="MessageTextBox" Text="{Binding MessageText}" Width="300" Margin="5"/>
+                <Button x:Name="SendButton" Content="Send" Click="SendButton_OnClick" Command="{Binding SendCommand}" Margin="5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
